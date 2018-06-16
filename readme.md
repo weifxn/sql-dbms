@@ -1,9 +1,16 @@
+# Questions
+
 ```sql
-
--- Part 3
-
 -- Question 1
-
+SELECT cust_name 
+FROM customer 
+WHERE cust_id IN(
+	SELECT cust_id 
+	FROM credit 
+	WHERE TO_CHAR(referral_date, 'YYYY')>=2015 
+	GROUP BY cust_id 
+	HAVING count(*)>5
+);
 
 -- Question 2
 SELECT product_id, product_expired
@@ -30,9 +37,10 @@ ORDER BY COUNT(product.ven_id) DESC;
 
 -- Question 5
 
+```
+# SQL
 
-
-
+```sql
 
 alter session set NLS_DATE_FORMAT='DD/MM/YYYY';
 
