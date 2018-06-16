@@ -2,18 +2,24 @@
 
 ```sql
 -- Question 1
-SELECT cust_name 
-FROM customer 
-WHERE cust_id IN(
+SELECT customer.cust_name as "Customer Name",
+count(credit.cust_id) as "Referral Count"
+FROM customer
+LEFT JOIN credit 
+ON customer.cust_id=credit.cust_id
+WHERE customer.cust_id IN(
 	SELECT cust_id 
 	FROM credit 
 	WHERE TO_CHAR(referral_date, 'YYYY')>=2015 
 	GROUP BY cust_id 
 	HAVING count(*)>5
-);
+) 
+GROUP BY credit.cust_id, customer.cust_name
+HAVING count(credit.cust_id) > 5;
 
 -- Question 2
-SELECT product_id, product_expired
+SELECT product_id as "Product ID", 
+product_expired as "Expiry Date"
 FROM product 
 WHERE product_id
 NOT IN(
