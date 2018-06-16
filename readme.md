@@ -4,7 +4,16 @@
 
 -- Question 1
 
+
 -- Question 2
+SELECT product_id, product_expired
+FROM product 
+WHERE product_id
+NOT IN(
+	SELECT product_id
+	FROM purchase
+)
+ORDER BY product_expired DESC;
 
 -- Question 3
 SELECT COUNT(product.ven_id) as "Total Products", 
