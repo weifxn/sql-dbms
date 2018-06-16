@@ -2,15 +2,12 @@
 
 alter session set NLS_DATE_FORMAT='DD/MM/YYYY';
 
-
 DROP TABLE rating;
 DROP TABLE purchase;
 DROP TABLE credit;
 DROP TABLE product;
 DROP TABLE vendor;
 DROP TABLE customer;
-
-
 
 CREATE TABLE customer(
 cust_id              CHAR(5) PRIMARY KEY,
@@ -546,14 +543,6 @@ INSERT INTO rating VALUES('1057','neW-01756','1','28/05/2018');
 INSERT INTO rating VALUES('1058','neW-01757','2','19/04/2018');
 INSERT INTO rating VALUES('1059','neW-01758','1','30/05/2018');
 INSERT INTO rating VALUES('1060','neW-01759','3','23/06/2018');
-
-
-
-
-
-
-
-
 
 
 ```
