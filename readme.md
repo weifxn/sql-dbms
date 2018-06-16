@@ -1,5 +1,30 @@
 ```sql
 
+-- Part 3
+
+-- Question 1
+
+-- Question 2
+
+-- Question 3
+SELECT COUNT(product.ven_id) as "Total Products", 
+vendor.ven_name as "Vendor Name"
+FROM product, vendor
+WHERE vendor.ven_id=product.ven_id 
+GROUP BY vendor.ven_name
+ORDER BY COUNT(product.ven_id) DESC;
+
+
+
+
+-- Question 4
+
+-- Question 5
+
+
+
+
+
 alter session set NLS_DATE_FORMAT='DD/MM/YYYY';
 
 DROP TABLE rating;
