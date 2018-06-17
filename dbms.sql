@@ -1,4 +1,6 @@
 
+
+
 alter session set NLS_DATE_FORMAT='DD/MM/YYYY';
 
 

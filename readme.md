@@ -29,19 +29,44 @@ NOT IN(
 ORDER BY product_expired DESC;
 
 -- Question 3
-SELECT COUNT(product.ven_id) as "Total Products", 
-vendor.ven_name as "Vendor Name"
-FROM product, vendor
-WHERE vendor.ven_id=product.ven_id 
-GROUP BY vendor.ven_name
-ORDER BY COUNT(product.ven_id) DESC;
-
-
-
+SELECT * FROM(
+	SELECT COUNT(product.ven_id) as "Total Products", 
+	ven_name as "Vendor Name"
+	FROM product, vendor
+	WHERE vendor.ven_id=product.ven_id 
+	GROUP BY ven_name
+	ORDER BY COUNT(product.ven_id) DESC;
+) 
+WHERE rownum<=5;
 
 -- Question 4
+SELECT product_name, product_rating
+FROM product, rating
+WHERE product.product_id=rating.product_id
+AND product_rating=5;
 
 -- Question 5
+SELECT * FROM
+(
+	SELECT purchase_date, ROUND(SUM(purchase_price),2)
+	AS "Total Amount", ROUND(SUM(purchase_price)-
+	(
+		SELECT SUM(purchase_price)*0.05
+		FROM purchase, customer
+		WHERE customer.cust_id=purchase.cust_id
+		AND purchase_date
+		IN 
+		(
+			SELECT MIN(purchase_date) 
+			FROM purchase, customer
+			WHERE purchase.cust_id=customer.cust_id
+			AND cust_name='Sally Smith'
+		)
+	),2) 
+	AS "Net Amount"
+	FROM purchase, customer
+	WHERE 
+)
 
 ```
 # SQL
