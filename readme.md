@@ -68,6 +68,26 @@ SELECT * FROM
 	WHERE 
 )
 
+-- Question 6
+SELECT cust_name, purchase.product_id, product.product_name, vendor.ven_id
+FROM customer, purchase, product, vendor
+WHERE customer.cust_id = purchase.cust_id
+AND product.product_id = purchase.product_id
+AND product.ven_id = vendor.ven_id
+AND cust_name='Yan Ming'
+AND purchase.product_id = 'neW-01725';
+
+-- Question 7
+SELECT cust_name, purchase.product_id, product.product_name, vendor.ven_id, rating.product_rating
+FROM customer, purchase, product, vendor, rating
+WHERE customer.cust_id = purchase.cust_id
+AND product.product_id = purchase.product_id
+AND product.ven_id = vendor.ven_id
+AND purchase.product_id = rating.product_id
+AND cust_name = 'Yan Ming'
+AND purchase.product_id = 'neW-01725'
+AND rating.product_rating;
+
 ```
 # SQL
 
