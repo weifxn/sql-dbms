@@ -52,8 +52,6 @@ product_dimension    VARCHAR(50),
           FOREIGN KEY (ven_id) REFERENCES vendor(ven_id)
 );
 
-
-
 CREATE TABLE purchase (
 purchase_id                      CHAR(20) PRIMARY KEY,
 product_id                         CHAR(20),

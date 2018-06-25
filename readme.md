@@ -62,7 +62,14 @@ SELECT * FROM
 			WHERE purchase.cust_id=customer.cust_id
 			AND cust_name='Sally Smith'
 		)
-	),2) 
+	)-( SELECT ROUND(SUM(purchase_price),2) * 0.1
+	FROM purchase, customer
+	WHERE customer.cust_id = purchase.cust_id
+	AND purchase_date IN(
+		SELECT MAX(purchase_date)
+		FROM purchase,customer
+		WHERE purchase.cust_id
+	) 
 	AS "Net Amount"
 	FROM purchase, customer
 	WHERE 
@@ -86,7 +93,7 @@ AND product.ven_id = vendor.ven_id
 AND purchase.product_id = rating.product_id
 AND cust_name = 'Yan Ming'
 AND purchase.product_id = 'neW-01725'
-AND rating.product_rating;
+AND rating.product_rating = '4';
 
 ```
 # SQL
